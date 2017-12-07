@@ -16,6 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from videos.views import home
+from videos.views import HomeView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #url(r'^$', home, name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),          #r은 read 읽는 것 / ^$:아무것도 안들어 간것.
 ]
