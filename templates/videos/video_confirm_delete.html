@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+    {% block content %}
+    <br><br>
+    <form method="post" action="">
+        {% csrf_token %}
+        <p class="h2">정말 삭제하겠습니까?</p>
+        <button type="submit" class="btn btn-primary" role="button">Delete</button>
+        <a href="{% url 'video-detail' object.id %}" class="btn btn-secondary">Back</a>
+    </form>
+{% endblock %}

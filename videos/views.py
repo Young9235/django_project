@@ -1,25 +1,37 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.generic import View
+
 # Create your views here.
-import random
+from .models import Video
+from django.views.generic import ListView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from .forms import VideoForm
 
-def home(request):                                   #장고에서 지원하는 request에 담아서 쏴주는 것(보여주는 것)
-    return HttpResponse('<h1>WELCOME HOME!!!</h1>')    #브라우저에 통신할 가능성이 많아진다. request값을
 
-class HomeView(View):           #class는 view를 상속받는 것
-    def get(self, request, *args, **kwargs):
-        #number = str(random.randint(100,1000))
-        #return HttpResponse('<h1>WELCOMES CLASS HOME ['+number+']!!!!</h1>')
-        # text = '<h1>안녕하세요</h1>'
-        # text +='<h3>랜덤숫자'+number+'</h3>'
-        # return HttpResponse(text)
-        number = str(random.randint(10,80))         #randint:범위
+class VideoListView(ListView):
+    queryset = Video.objects.all()
+    # all_count = Video.objects.all().count()
+    #print(queryset)
+    def get_context_data(self, *args, **kwargs):
+        context = super(VideoListView, self).get_context_data(*args, **kwargs)   #super:부모?
+        # context['count'] = 4
+        context['all_count'] = Video.objects.all().count()
+        return context
 
-        context = {
-            "name" : "John",
-            "number" : number,
-            "present" : "<ul><li>내용1</li><li>내용2</li><li>내용3</li></ul>"
-        }
+class VideoDetailView(DetailView):
+    queryset = Video.objects.all()          #video의 모든 걸 가져온다는 의미
 
-        return render(request, "home.html", context)
+    def get_context_data(self, *arg, **kwargs):
+        context = super(VideoDetailView, self).get_context_data(*arg, **kwargs)
+        return context
+
+class VideoCreateView(CreateView):
+    model = Video
+    form_class = VideoForm
+
+class VideoUpdateView(UpdateView):
+    model = Video
+    form_class = VideoForm
+
+class VideoDeleteView(DeleteView):
+    queryset = Video.objects.all()
+    success_url = '/video/'

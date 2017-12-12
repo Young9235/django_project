@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+    {% block content %}
+    <br>
+    <form method="post" action="">
+        {% csrf_token %}            <!--폼태그 앞에는 해킹을 막기위한 {% csrf_token %} 넣어야 한다-->
+        {{form.as_p}}
+        <input type="submit" value="Send" class="btn btn-primary">
+        <a href="javascript:history.back()" class="btn btn-secondary" role="button">Back</a>
+    </form>
+    {% endblock %}

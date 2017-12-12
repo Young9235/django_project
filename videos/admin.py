@@ -4,4 +4,11 @@ from django.contrib import admin
 
 from .models import Video
 
-admin.site.register(Video)      #어드민 사이트에 비디오를 넣는 것
+class VideoAdmin(admin.ModelAdmin):
+    list_filter = ['title']
+    list_display = ['id', 'title', 'timestamp']
+    search_fields = ['title']
+    class Meta:
+        model = Video
+
+admin.site.register(Video, VideoAdmin)
