@@ -22,6 +22,7 @@ from .views import Team
 from videos.views import VideoListView
 from videos.views import VideoDetailView
 from videos.views import VideoCreateView, VideoUpdateView, VideoDeleteView
+from .views import Landingpage
 
 
 # from videos.views import home
@@ -36,10 +37,10 @@ urlpatterns = [
     url(r'^team/$', Team.as_view()),
     # url(r'^about/$', about),
     # url(r'^team/$', team),
-    # url(r'^Team/$', Team.as_view()),
     url(r'^video/$', VideoListView.as_view(), name='video'),
     url(r'^video/(?P<pk>\d+)/$', VideoDetailView.as_view(), name='video-detail'),
     url(r'^video/create/$', VideoCreateView.as_view(), name='video-create'),
     url(r'^video/(?P<pk>\d+)/update/$', VideoUpdateView.as_view(), name='video-update'),
     url(r'^video/(?P<pk>\d+)/delete/$', VideoDeleteView.as_view(), name='video-delete'),
+    url(r'^index/$', Landingpage.as_view()),
 ]

@@ -28,8 +28,8 @@
               {{ object.title }}
               </a>
           </td>
-          <td>{{object.timestamp}}</td>
-          <td><a href="{% url 'video-update' object.id %}" class="btn btn-default" role="button">Update</a></td>
+          <td>{{ object.timestamp|date:"Y-m-d [H:i:s]" }}</td>
+          <td><a href="{% url 'video-update' object.id %}" class="btn btn-success" role="button">Update</a></td>
         <!--{% if forloop.counter|divisibleby:2 %}-->
         </tr>
             <!--{% if forloop.counter != all_count %} <tr>{% endif %}-->

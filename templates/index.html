@@ -1,0 +1,50 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">      <!--가장 최근 브라우저를 불러오는 것-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!--가로길이를 디바이스에 맞추는 것(반응형웹)-->
+    <title>{% block title %} Modern Responsible Website {% endblock %}</title>
+
+    {% include 'defaults/head.html' %}
+
+</head>
+
+<body>
+<!--menu-->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img src="{% static 'image/img/logo.png' %}"></a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <!--navbarTogglerDemo02 : lg사이즈에서 메뉴 내리는 것 명령하는 id-->
+                <ul class="navbar-nav">
+                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonial">Customer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Price</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/video/">Videos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+{% block content %}
+
+{% endblock content %}
+{% include 'defaults/scripts.html' %}
+</body>
+</html>

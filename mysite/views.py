@@ -33,3 +33,7 @@ class Team(View):
         # 함수 get방식을 쓰는 것
         # request의 텍스트 불러오기 {} : 서버에서 표시하고 싶은 값이 있을 때 쓰는 것
         # 클래스는 대문자, 함수는 소문자.
+
+class Landingpage(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "landingpage.html", {})

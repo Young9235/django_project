@@ -1,10 +1,41 @@
 {% extends "base.html" %}
     {% block content %}
     <br>
-    <form method="post" action="">
-        {% csrf_token %}            <!--폼태그 앞에는 해킹을 막기위한 {% csrf_token %} 넣어야 한다-->
-        {{form.as_p}}
-        <input type="submit" value="Send" class="btn btn-primary">
-        <a href="javascript:history.back()" class="btn btn-secondary" role="button">Back</a>
+    <form method="post" action="">{% csrf_token %}
+      <div class="form-group row">
+        <label for="id_title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="id_title" name="title" placeholder="타이틀을 입력하세요">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="id_embed_code" class="col-sm-2 col-form-label">Embed code: </label>
+        <div class="col-sm-8">
+            <textarea cols="40" class="form-control" id="id_embed_code" name="embed_code" rows="10" placeholder="코드를 입력하세요" required></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10 text-right">
+            <input type="submit" value="Send" class="btn btn-primary">
+            <a href="javascript:history.back()" class="btn btn-secondary" role="button">Back</a>
+        </div>
+      </div>
     </form>
+    <!--<form method="post" action="">-->
+        <!--{% csrf_token %}            &lt;!&ndash;폼태그 앞에는 해킹을 막기위한 {% csrf_token %} 넣어야 한다&ndash;&gt;-->
+        <!--{{form.as_p}}-->
+        <!--<hr>-->
+
+        <!--<p>-->
+             <!--<label for="id_title">Title:</label>-->
+             <!--<input id="id_title" maxlength="120" name="title" type="text" required />-->
+            <!--&lt;!&ndash;name이 form.py의 키 벨류값으로 들어온다&ndash;&gt;-->
+        <!--</p>-->
+        <!--<p>-->
+             <!--<label for="id_embed_code">Embed code:</label>-->
+             <!--<textarea cols="40" id="id_embed_code" name="embed_code" rows="10" required></textarea>-->
+        <!--</p>-->
+        <!--<input type="submit" value="Send" class="btn btn-primary">-->
+        <!--<a href="javascript:history.back()" class="btn btn-secondary" role="button">Back</a>-->
+    <!--</form>-->
     {% endblock %}
