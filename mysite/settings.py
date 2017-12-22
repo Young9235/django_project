@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'videos.apps.VideosConfig',
+    'photo',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'     #static이 어느 파일이라는 것을 알아야 한다.
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+LOGIN_REDIRECT_URL = '/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

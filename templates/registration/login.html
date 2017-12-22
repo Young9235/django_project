@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+
+
+            <form method="POST" action=".">{% csrf_token %}
+
+              <div class="form-group row">
+                <label for="id_username" class="col-sm-2 col-form-label">ID</label>
+                <div class="col-sm-10">
+                  <input type="ID" class="form-control" id="id_username" placeholder="ID" name="username" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="id_password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="id_password" placeholder="Password"
+                         name="password" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12 text-right">
+                  <button type="submit" class="btn btn-primary">로그인</button>
+                    <a href="/" class="btn btn-secondary" role="button">HOME</a>
+                </div>
+              </div>
+
+                {% if form.errors %}
+                <div class="form-group row">
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.errors }}
+                    </div>
+                </div>
+              {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

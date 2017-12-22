@@ -17,14 +17,30 @@
 </head>
 
 <body>
+
+
 <div class="container">
+{% block login %}
+    <div class="row">
+        <div class="col-12 text-right">
+            {% if user.is_active %}
+                <a href="{% url 'logout' %}">로그아웃</a>
+                <a href="{% url 'password_change' %}">패스워드 변경</a>
+            {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                <a href="{% url 'register' %}">회원가입</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
     <div class="row">
         <div class="col-md-2">
             {% block sidebar %}
             <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="{% url 'video' %}">VIDEO</a></li>
-                <li><a href="/index/">게시판</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'video' %}">Video</a></li>
+                <li><a href="/index/">Landing Page</a></li>
+                <li><a href="/photo/">Photo</a></li>
             </ul>
             {% endblock %}
         </div>
